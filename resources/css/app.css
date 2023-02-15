@@ -1,0 +1,328 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica";
+    box-sizing: border-box;
+  }
+  p {
+    font-size: 14px;
+  }
+  
+  nav {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+  
+  .w-90 {
+    width: 90%;
+  }
+  
+  .navbar-height {
+    height: 100px;
+  }
+  
+  .owl-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+  }
+  
+  .owl-next,
+  .owl-prev {
+    height: 32px;
+    width: 32px;
+    border: 1px solid #c4c4c4;
+    background-color: #ffffff;
+  }
+  
+  .owl-next:hover,
+  .owl-prev:hover {
+    transition-duration: 0.3s;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+  }
+  .our-service-list-icon {
+    height: 32px;
+    width: 32px;
+  }
+  
+  #container-testimonial {
+    width: 100%;
+  }
+  
+  /* HP Potrait */
+  @media (max-width: 600px) {
+    .container-fluid{
+      padding-left:0% !important;
+      padding-right:0% !important ;
+    }
+    #sidebar {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+    .navbar-toggler {
+      border: 0px !important;
+      background-color: #f1f3ff;
+      box-shadow: none !important;
+    }
+  
+    .offcanvas {
+      width: 50% !important;
+    }
+  
+    .offcanvas-header h5 {
+      padding-top: 0% !important;
+    }
+  
+    #navbar-button {
+      padding: 0% !important;
+    }
+  
+    .navbar-brand img {
+      width: 100px !important;
+      height: 34px;
+    }
+    #navbar-logo {
+      padding-left: 1% !important;
+    }
+  
+    .hero {
+      flex-direction: column;
+    }
+    .hero div,
+    .hero img {
+      width: 100% !important;
+    }
+  
+    #service-container {
+      flex-direction: column;
+    }
+  
+    #service-container img,
+    .our-service-title {
+      width: 100% !important;
+      margin: 24px 0 !important;
+    }
+  
+    #our-service {
+      margin-left: 0 !important ;
+      width: 100% !important;
+    }
+  
+    #whyus-card {
+      flex-direction: column;
+      width: 100%;
+    }
+    #whyus-title {
+      text-align: center;
+    }
+  
+    .card {
+      display: flex;
+      width: 100% !important;
+      margin-bottom: 16px;
+    }
+  
+    .testimonial-item {
+      flex-direction: column !important;
+    }
+    .testimonial-star {
+      justify-content: center;
+      margin: 24px 0px;
+    }
+  
+    #container-testimonial {
+      width: 90% !important;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    #banner{
+      padding-right: 0% !important;
+      padding-left: 0% !important;
+    }
+    #banner-title {
+      text-align: center;
+      width: 60% !important;
+    }
+    #banner-item {
+      width: 60% !important;
+    }
+    #banner-button {
+      width: 50% !important ;
+      margin-top: 24px !important;
+    }
+  
+    #container-faq {
+      flex-direction: column !important;
+      width: 90% !important;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .accordion {
+      width: 100% !important;
+    }
+  
+    #accordion-title {
+      width: 100% !important;
+    }
+    #footer {
+      flex-direction: column !important;
+      width: 90% !important;
+    }
+    #footer-alamat {
+      width: 100% !important;
+      padding: 0% !important;
+      margin-bottom: 16px;
+    }
+    #footer-nav {
+      width: 100%;
+      padding: 0% !important;
+      margin-bottom: 16px;
+    }
+    #footer-connect-with-us {
+      width: 100%;
+      padding: 0% !important;
+      margin-bottom: 16px;
+    }
+  
+    #footer-logo {
+      width: 100%;
+      padding: 0% !important;
+    }
+  }
+  
+  /* Potrait Tablet */
+  
+  @media only screen and (max-width: 992px) and (min-width: 600px) {
+    .container-fluid{
+      padding-left:0% !important;
+      padding-right:0% !important ;
+    }
+    #sidebar {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+    .navbar-toggler {
+      border: 0px !important;
+      background-color: #f1f3ff;
+      box-shadow: none !important;
+    }
+  
+    .offcanvas {
+      width: 35% !important;
+    }
+  
+    .offcanvas-header h5 {
+      padding-top: 0% !important;
+    }
+  
+    #navbar-button {
+      width: 2em !important;
+      height: 2em !important;
+    }
+  
+    .navbar-brand img {
+      width: 100px !important;
+      height: 34px;
+      margin-left: 6% !important;
+    }
+    .navbar-toggler-icon {
+      width: 2em !important;
+      height: 2em !important;
+    }
+  
+    .hero {
+      flex-direction: column;
+    }
+    .hero div,
+    .hero img {
+      width: 100% !important;
+    }
+  
+    .hero h1,
+    .hero p,
+    .hero button {
+      text-align: start;
+    }
+  
+    #service-container {
+      display: grid !important;
+      grid-template-columns: 40% 60% !important;
+      gap: 10px;
+    }
+  
+    #service-container img {
+      width: 100% !important;
+    }
+  
+    #our-service {
+      width: 100% !important;
+      padding-right: 10% !important;
+    }
+    #container-testimonial {
+      width: 90% !important;
+      align-items: center;
+      justify-content: center;
+    }
+    .testi-item-width{
+      width: 100% !important;
+    }
+  
+    #whyus-card {
+      display: grid !important;
+      grid-template-columns: 50% 50% !important;
+      gap: 10px;
+    }
+  
+    .card {
+      width: 100% !important;
+      justify-content: center;
+    }
+  
+    #whyus-title {
+      text-align: center;
+    }
+  
+    #container-faq {
+      flex-direction: column !important;
+      width: 90% !important;
+      align-items: center;
+      text-align: center;
+    }
+  
+    #container-faq div {
+      width: 100% !important;
+    }
+  
+    #footer {
+      display: grid !important;
+      grid-template-columns: 65% 25% !important;
+    }
+  
+    #footer-alamat {
+      width: 100% !important;
+      padding: 0% !important;
+      margin-bottom: 16px;
+    }
+    #footer-nav {
+      width: 100%;
+      padding: 0% !important;
+      margin-bottom: 16px;
+    }
+    #footer-connect-with-us {
+      width: 100%;
+      padding: 0% !important;
+      margin-bottom: 16px;
+    }
+  
+    #footer-logo {
+      width: 100%;
+      padding: 0% !important;
+    }
+  }
+  

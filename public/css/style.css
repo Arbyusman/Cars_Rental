@@ -1,0 +1,664 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica";
+    box-sizing: border-box;
+}
+p {
+    font-size: 14px;
+}
+
+nav {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.w-90 {
+    width: 90%;
+}
+
+.navbar-height {
+    height: 100px;
+}
+
+.owl-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.owl-next,
+.owl-prev {
+    height: 32px;
+    width: 32px;
+    border: 1px solid #c4c4c4;
+    background-color: #ffffff;
+}
+
+.owl-next:hover,
+.owl-prev:hover {
+    transition-duration: 0.3s;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+}
+.our-service-list-icon {
+    height: 32px;
+    width: 32px;
+}
+
+#container-testimonial {
+    width: 100%;
+}
+
+/* tipe driver */
+.select-driver,
+.select-waktu {
+    position: relative !important;
+    font-size: 14px;
+}
+.select-driver select,
+.select-waktu select {
+    display: none;
+}
+
+.select-selected-driver {
+    color: #3c3c3c;
+    font-family: "Helvetica";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 8px 16px;
+    width: 100%;
+    height: 62% !important;
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d0d0d0;
+    border-radius: 2px;
+    background: url(../images/icons/fi_chevron-down.png) no-repeat center right
+        3%;
+    background-size: auto;
+    margin-top: 3px;
+}
+.select-selected-driver:hover {
+    background: #ffffff;
+    border: 1px solid #5cb85f;
+    border-radius: 2px;
+    box-shadow: none !important;
+    background: url(../images/icons/fi_chevron-down.png) no-repeat center right
+        3%;
+    background-size: auto;
+}
+
+.select-selected-waktu {
+    color: #3c3c3c;
+    font-family: "Helvetica";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 8px 16px;
+    width: 100%;
+    height: 62% !important;
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d0d0d0;
+    border-radius: 2px;
+    background: url(../images/icons/fi_clock.png) no-repeat center right 3%;
+    background-size: auto;
+    margin-top: 3px;
+}
+
+.select-selected-waktu:hover {
+    background: #ffffff;
+    border: 1px solid #5cb85f;
+    border-radius: 2px;
+    box-shadow: none !important;
+    background: url(../images/icons/fi_clock.png) no-repeat center right 3%;
+    background-size: auto;
+}
+
+.select-items div,
+.form-control {
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    color: #3c3c3c;
+    background: white;
+    margin-top: 0%;
+    padding: 8px 16px;
+    cursor: pointer;
+    user-select: none;
+    width: 100%;
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+}
+
+.select-items {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover {
+    background: #c9e7ca;
+    color: #5cb85f;
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+#pilih-waktu {
+    color: rgb(0, 0, 0);
+    padding: 8px 16px;
+    width: 100%;
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d0d0d0;
+    border-radius: 2px;
+    background: url(../images/icons/fi_clock.png) !;
+    background-size: auto;
+}
+
+.form-date,
+.form-time {
+    color: #3c3c3c;
+    font-family: "Helvetica";
+    font-style: normal;
+    font-size: 14px;
+    line-height: 18px;
+    width: 100%;
+    height: 62% !important;
+    padding: 8px 16px;
+    width: 100%;
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d0d0d0;
+    border-radius: 2px;
+}
+
+.form-date:hover,
+.form-date::after {
+    background: #ffffff;
+    border: 1px solid #5cb85f;
+    border-radius: 2px;
+    box-shadow: none !important;
+}
+#dateFilter,
+#dateFilter:focus {
+    color: rgb(0, 0, 0);
+    padding: 8px 16px;
+    width: 100%;
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #d0d0d0;
+    border-radius: 2px;
+    background: url(../images/icons/fi_calendar.png) no-repeat center right 4%;
+    background-size: auto;
+    outline: none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+#dateFilter::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: none !important ;
+}
+
+.form-time:hover,
+.form-time::after {
+    background: #ffffff;
+    border: 1px solid #5cb85f;
+    border-radius: 2px;
+    box-shadow: none !important;
+}
+
+#timeFilter::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: none !important;
+}
+#timeFilter,
+#timeFilter:focus {
+    color: rgb(0, 0, 0);
+    padding: 8px 16px;
+    width: 100%;
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #d0d0d0;
+    border-radius: 2px;
+    background: url(../images/icons/fi_clock.png) no-repeat center right 4%;
+    background-size: auto;
+    outline: none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+#jumlah-penumpang,
+#jumlah-penumpang:focus {
+    color: rgb(0, 0, 0);
+    padding: 8px 16px;
+    width: 100%;
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #d0d0d0;
+    border-radius: 2px;
+    background: url(../images/icons/fi_users.png) no-repeat center right 4%;
+    background-size: auto;
+}
+#jumlah-penumpang:hover {
+    background: #ffffff;
+    border: 1px solid #5cb85f;
+    border-radius: 2px;
+    box-shadow: none !important;
+    background: url(../images/icons/fi_users.png) no-repeat center right 3%;
+    background-size: auto;
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+}
+
+::placeholder {
+    font-family: "Helvetica";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    color: #3c3c3c !important;
+}
+
+#clear-btn,
+#clear-btn:focus {
+    border: 1px solid #0d28a6 !important;
+    border-radius: 2px !important;
+    color: #0d28a6;
+    box-shadow: #183ad1 !important;
+}
+
+#cars-container {
+    display: grid !important;
+    grid-template-columns: 32.5% 32.5% 32.5%;
+    justify-content: space-between;
+    gap: 0.5%;
+    margin-top: 2%;
+}
+
+/* tipe driver */
+
+/* HP Potrait */
+@media (max-width: 600px) {
+    .container-fluid {
+        padding-left: 0% !important;
+        padding-right: 0% !important ;
+    }
+    #sidebar {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    .navbar-toggler {
+        border: 0px !important;
+        background-color: #f1f3ff;
+        box-shadow: none !important;
+    }
+
+    .offcanvas {
+        width: 50% !important;
+    }
+
+    .offcanvas-header h5 {
+        padding-top: 0% !important;
+    }
+
+    #navbar-button {
+        padding: 0% !important;
+    }
+
+    .navbar-brand img {
+        width: 100px !important;
+        height: 34px;
+    }
+    #navbar-logo {
+        padding-left: 1% !important;
+    }
+
+    .hero {
+        flex-direction: column;
+    }
+    .hero div,
+    .hero img {
+        width: 100% !important;
+    }
+
+    #service-container {
+        flex-direction: column;
+    }
+
+    #service-container img,
+    .our-service-title {
+        width: 100% !important;
+        margin: 24px 0 !important;
+    }
+
+    #our-service {
+        margin-left: 0 !important ;
+        width: 100% !important;
+    }
+
+    #whyus-card {
+        flex-direction: column;
+        width: 100%;
+    }
+    #whyus-title {
+        text-align: center;
+    }
+
+    .card {
+        display: flex;
+        width: 100% !important;
+        margin-bottom: 16px;
+    }
+
+    .testimonial-item {
+        flex-direction: column !important;
+    }
+    .testimonial-star {
+        justify-content: center;
+        margin: 24px 0px;
+    }
+
+    #container-testimonial {
+        width: 90% !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #banner {
+        padding-right: 0% !important;
+        padding-left: 0% !important;
+    }
+    #banner-title {
+        text-align: center;
+        width: 60% !important;
+    }
+    #banner-item {
+        width: 60% !important;
+    }
+    #banner-button {
+        width: 50% !important ;
+        margin-top: 24px !important;
+    }
+
+    #container-faq {
+        flex-direction: column !important;
+        width: 90% !important;
+        align-items: center;
+        text-align: center;
+    }
+
+    .accordion {
+        width: 100% !important;
+    }
+
+    #accordion-title {
+        width: 100% !important;
+    }
+    #footer {
+        flex-direction: column !important;
+        width: 90% !important;
+    }
+    #footer-alamat {
+        width: 100% !important;
+        padding: 0% !important;
+        margin-bottom: 16px;
+    }
+    #footer-nav {
+        width: 100%;
+        padding: 0% !important;
+        margin-bottom: 16px;
+    }
+    #footer-connect-with-us {
+        width: 100%;
+        padding: 0% !important;
+        margin-bottom: 16px;
+    }
+
+    #footer-logo {
+        width: 100%;
+        padding: 0% !important;
+    }
+
+    #cari-mobil {
+        width: 100% !important;
+        margin: 0% !important;
+    }
+
+    #tampil-mobil {
+        flex-direction: column !important;
+        align-items: center !important ;
+        width: 100% !important;
+    }
+    #menu-cari-mobil {
+        flex-direction: column !important;
+        align-items: center !important ;
+    }
+    .select-driver,
+    .select-waktu,
+    .select-penumpang,
+    .select-date,
+    #submit-cari-mobil {
+        width: 80% !important;
+        margin-top: 2% !important;
+        margin-bottom: 2% !important;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        margin-right: 3% !important;
+    }
+
+    #tampil-mobil .card {
+        margin-right: 0% !important;
+        margin-left: 0% !important;
+    }
+    #submit-cari-mobil {
+        display: flex;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-top: 0% !important;
+    }
+    .btn-cari-mobil {
+        display: flex;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin-top: 5% !important;
+    }
+}
+
+/* Potrait Tablet */
+
+@media only screen and (max-width: 992px) and (min-width: 600px) {
+    .container-fluid {
+        padding-left: 0% !important;
+        padding-right: 0% !important ;
+    }
+    #sidebar {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    .navbar-toggler {
+        border: 0px !important;
+        background-color: #f1f3ff;
+        box-shadow: none !important;
+    }
+
+    .offcanvas {
+        width: 35% !important;
+    }
+
+    .offcanvas-header h5 {
+        padding-top: 0% !important;
+    }
+
+    #navbar-button {
+        width: 2em !important;
+        height: 2em !important;
+    }
+
+    .navbar-brand img {
+        width: 100px !important;
+        height: 34px;
+        margin-left: 6% !important;
+    }
+    .navbar-toggler-icon {
+        width: 2em !important;
+        height: 2em !important;
+    }
+
+    .hero {
+        flex-direction: column;
+    }
+    .hero div,
+    .hero img {
+        width: 100% !important;
+    }
+
+    .hero h1,
+    .hero p,
+    .hero button {
+        text-align: start;
+    }
+
+    #service-container {
+        display: grid !important;
+        grid-template-columns: 40% 60% !important;
+        gap: 10px;
+    }
+
+    #service-container img {
+        width: 100% !important;
+    }
+
+    #our-service {
+        width: 100% !important;
+        padding-right: 10% !important;
+    }
+    #container-testimonial {
+        width: 90% !important;
+        align-items: center;
+        justify-content: center;
+    }
+    .testi-item-width {
+        width: 100% !important;
+    }
+
+    #whyus-card {
+        display: grid !important;
+        grid-template-columns: 50% 50% !important;
+        gap: 10px;
+    }
+
+    .card {
+        width: 100% !important;
+        justify-content: center;
+    }
+
+    #whyus-title {
+        text-align: center;
+    }
+
+    #container-faq {
+        flex-direction: column !important;
+        width: 90% !important;
+        align-items: center;
+        text-align: center;
+    }
+
+    #container-faq div {
+        width: 100% !important;
+    }
+
+    #footer {
+        display: grid !important;
+        grid-template-columns: 65% 25% !important;
+    }
+
+    #footer-alamat {
+        width: 100% !important;
+        padding: 0% !important;
+        margin-bottom: 16px;
+    }
+    #footer-nav {
+        width: 100%;
+        padding: 0% !important;
+        margin-bottom: 16px;
+    }
+    #footer-connect-with-us {
+        width: 100%;
+        padding: 0% !important;
+        margin-bottom: 16px;
+    }
+
+    #footer-logo {
+        width: 100%;
+        padding: 0% !important;
+    }
+
+    #tampil-mobil {
+        flex-direction: column !important;
+        align-items: center !important ;
+        width: 100% !important;
+    }
+    #menu-cari-mobil {
+        display: grid !important;
+        grid-template-columns: 50% 50%;
+    }
+    .select-driver,
+    .select-waktu,
+    .select-penumpang,
+    .select-date {
+        width: 80% !important;
+        margin-top: 2% !important;
+        margin-bottom: 2% !important;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        margin-right: 3% !important;
+    }
+
+    #tampil-mobil .card {
+        margin-right: 0% !important;
+        margin-left: 0% !important;
+        margin-bottom: 2%;
+    }
+    #submit-cari-mobil {
+        position: relative;
+        display: grid !important;
+        align-items: center !important;
+        justify-content: end !important;
+        margin-top: 0% !important;
+        height: 100% !important;
+        width: 50% !important;
+        margin-right: -5% !important;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 3;
+        grid-row-end: 4;
+
+        margin-left: 32% !important;
+    }
+    .btn-cari-mobil {
+        display: flex;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin-top: 5% !important;
+        height: 100% !important;
+    }
+}
