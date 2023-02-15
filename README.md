@@ -17,9 +17,9 @@ Copy the example env file and make the required configuration changes in the .en
 
     cp .env.example .env
 
-Run the database migrations (**Set the database connection in .env before migrating**)
+Run the database migrations & seeders (**Set the database connection in .env before migrating**)
 
-    php artisan migrate
+    php artisan migrate --seed
 
 Start the local development server
 
