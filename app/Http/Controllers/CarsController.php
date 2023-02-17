@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\Capacity;
+use App\Models\User;
+// use App\Models\
+use App\Notifications\carsNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class CarsController extends Controller
@@ -15,6 +17,19 @@ class CarsController extends Controller
     {
         $cars = Car::all();
         return view('cars.landing_page', compact('cars'));
+    }
+
+    public function notify()
+    {
+        $unreadNotifications = auth()->user()->unreadNotifications;
+        $countUnreadNotifications = $unreadNotifications->count()+1;
+
+        if (auth()->user()) {
+            $user = User::first();
+            auth()->user()->notify(new carsNotification($user));
+            return view('layouts.adminLayout', ['notif' => $user, 'unreadNotifications' => $countUnreadNotifications]);
+        }
+       
     }
 
     public function search()
@@ -29,7 +44,7 @@ class CarsController extends Controller
         return view('cars.admin.admin', ['cars' => $cars]);
     }
 
-   
+
 
     public function createCarsView()
     {
@@ -45,6 +60,7 @@ class CarsController extends Controller
             'car_name' => 'required|string|max:255',
             'rent_cost' => 'required|max:255',
             'sizeCar_id' => 'required|max:255',
+            'availableAt' => 'required',
             'car_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -56,14 +72,30 @@ class CarsController extends Controller
         $path = $image->storeAs('public/Car_Images', $newName);
 
 
+        if ($request->availableAt == true) {
+            $available = true;
+        } else {
+            $available = false;
+        }
 
         Car::create([
             'car_name' => $request->car_name,
             'rent_cost' => $request->rent_cost,
             'sizeCar_id' => $request->sizeCar_id,
+            'available' => $available,
+            'availableAt' => $request->availableAt,
             'created_by' => Auth::user()->name,
             'car_image' => $path,
         ]);
+
+        if (auth()->user()) {
+            $user = User::first();
+            auth()->user()->notify(new carsNotification($user));
+            return view('cars.admin.notif', ['notif' => $user]);
+        }
+
+
+
         return redirect('/admin')->with('success', 'Created Successfully.');
     }
 

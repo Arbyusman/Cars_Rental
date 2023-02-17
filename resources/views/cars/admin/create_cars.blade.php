@@ -37,6 +37,8 @@
 
                     </div>
 
+
+
                     <div id="" class="d-flex align-items-center flex-row my-2">
                         <label for="rent_cost" class="input_kendaraan" style="width: 13%;">Sewa Per Hari</label>
                         <input type="text" name="rent_cost"
@@ -46,6 +48,21 @@
                             style="width:35% ; border: 1px solid #D0D0D0;
           border-radius: 2px;">
                         @error('rent_cost')
+                            <span class="invalid-feedback ms-1" role="alert" style="width:20%">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div id="" class="d-flex align-items-center flex-row my-2">
+                        <label for="availableAt" class="input_kendaraan" style="width: 13%;">Tersedia</label>
+                        <input type="datetime-local" name="availableAt"
+                            class="input_data_car @error('availableAt') is-invalid                         
+                        @enderror"
+                            id="availableAt" placeholder="RP 0,-"
+                            style="width:35% ; border: 1px solid #D0D0D0;
+          border-radius: 2px;">
+                        @error('availableAt')
                             <span class="invalid-feedback ms-1" role="alert" style="width:20%">
                                 <strong>{{ $message }}</strong>
                             </span>

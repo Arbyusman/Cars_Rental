@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         DB::table('users')->insert([
-            // 'name' => Str::random(10),
             'name' => 'arbiansyah',
             'email' => 'arby@gmail.com',
             'role' => 'Admin',
@@ -28,7 +27,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            // 'name' => Str::random(10),
             'name' => 'ichsan',
             'email' => 'ichsan@gmail.com',
             'role' => 'Buyer',

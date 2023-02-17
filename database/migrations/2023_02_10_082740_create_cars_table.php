@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('car_name');
             $table->string('rent_cost');
             $table->string('car_image');
+            $table->boolean('available')->nullable();
+            $table->string('availableAt');
             $table->string('sizeCar_id')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();

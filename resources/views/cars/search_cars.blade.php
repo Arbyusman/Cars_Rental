@@ -37,7 +37,7 @@
             <div class="select-date mx-2 my-3" style="width: 21%">
                 <label for="inpudate" style="font-size: 14px">Tanggal</label>
                 <input class="form-date container-fluid" name="InputDate" id="dateFilter" placeholder="Pilih Tanggal"
-                    type="text" onfocus="(this.type='date')" />
+                    type="date" onfocus="(this.type='date')" />
             </div>
 
             <div class="select-date mx-2 my-3" style="width: 21%">
@@ -47,31 +47,31 @@
             </div>
 
             <!-- <div class="select-waktu mx-2 my-3" style="width: 21%">
-                              <label for="pilih-waktu" style="font-size: 14px">Waktu Jemput/Ambil</label>
-                              <select class="container-fluid" id="pilih-waktu" style="height: 50%">
-                                <option>Pilih Waktu</option>
-                                <option class="isi-option">
-                                  <p>08:00</p>
-                                  <p>WIB</p>
-                                </option>
-                                <option>
-                                  <p>09:00</p>
-                                  <p>WIB</p>
-                                </option>
-                                <option>
-                                  <p>10:00</p>
-                                  <p>WIB</p>
-                                </option>
-                                <option>
-                                  <p>11:00</p>
-                                  <p>WIB</p>
-                                </option>
-                                <option>
-                                  <p>12:00</p>
-                                  <p>WIB</p>
-                                </option>
-                              </select>
-                            </div> -->
+                                  <label for="pilih-waktu" style="font-size: 14px">Waktu Jemput/Ambil</label>
+                                  <select class="container-fluid" id="pilih-waktu" style="height: 50%">
+                                    <option>Pilih Waktu</option>
+                                    <option class="isi-option">
+                                      <p>08:00</p>
+                                      <p>WIB</p>
+                                    </option>
+                                    <option>
+                                      <p>09:00</p>
+                                      <p>WIB</p>
+                                    </option>
+                                    <option>
+                                      <p>10:00</p>
+                                      <p>WIB</p>
+                                    </option>
+                                    <option>
+                                      <p>11:00</p>
+                                      <p>WIB</p>
+                                    </option>
+                                    <option>
+                                      <p>12:00</p>
+                                      <p>WIB</p>
+                                    </option>
+                                  </select>
+                                </div> -->
 
             <div class="select-penumpang mx-2 my-3 " style="width: 21%">
                 <label for="Jumlah-penumpang" style="font-size: 14px">Jumlah Penumpang (Optional)</label>

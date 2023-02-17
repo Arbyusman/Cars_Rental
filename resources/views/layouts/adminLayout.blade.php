@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/css/side_nav.css" />
 
 </head>
-    
+
 <body style="background: #CFD4ED;">
     <!-- header -->
     <header class="container-fluid pt-2  d-grid fixed-top"
@@ -40,6 +40,12 @@
             <div class="d-flex me-3 align-items-center ">
 
 
+
+                {{-- <div class="modal-dialog modal-dialog-scrollable" id="exampleModal" 
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                </div> --}}
+
+
                 <form id="form-input" class=" me-3" role="search" style="width: 244px;
                 height: 36px;">
                     <div class="input-group justify-content-center align-items-center ">
@@ -52,6 +58,42 @@
                     </div>
                 </form>
 
+
+                <button type="button" class="btn btn-primary position-relative" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="position-absolute  badge rounded-pill bg-danger">
+                        {{ $unreadNotifications }}
+                        <span class="visually-hidden">unread messages</span>
+                    </span>
+                </button>
+
+
+                <div class="modal " id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    @foreach (auth()->user()->notifications as $notification)
+                        <section id="tampil_mobil">
+                            <div class="card  mt-2 container-fluid">
+
+                                <div class="card-body ms-0 me-0">
+                                    <div class=" d-flex">
+                                        <p class="p-0 my-1">{{ $notification->data['name'] }}</p>
+                                    </div>
+                                    <div class=" d-flex">
+                                        <p class="p-0 my-1"> {{ $notification->data['email'] }}</p>
+                                    </div>
+                                    <div class=" d-flex">
+                                        <p class="p-0 my-1"> {{ $notification->data['message'] }}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                        </section>
+                    @endforeach
+                </div>
+
                 <button id="navbar-button" class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
@@ -61,10 +103,11 @@
                 @guest
                     @if (Route::has('login'))
                         <div class="nav-item">
-                            <a class="btn btn-success fw-bold border-0 px-3" style="background: #5cb85f" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="btn btn-success fw-bold border-0 px-3" style="background: #5cb85f"
+                                href="{{ route('login') }}">{{ __('Login') }}</a>
                         </div>
                     @endif
-{{-- 
+                    {{-- 
                     @if (Route::has('register'))
                         <div class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -106,7 +149,9 @@
                         <li><a class="dropdown-item" href="#">Sign out</a></li>
                     </ul>
                 </div> --}}
+
             </div>
+
 
         </div>
 
@@ -138,6 +183,14 @@
                 </div>
             </div>
             <div id="mySidebar" class="sidebar">
+                <!-- Scrollable modal -->
+                <!-- Button trigger modal -->
+                {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Launch demo modal
+                </button> --}}
+
+                <!-- Modal -->
+
 
 
 
@@ -195,6 +248,7 @@
     function openNavItem() {
         document.getElementById("collapseWidthExample").style.display = "block";
         document.getElementById("main").style.marginLeft = "16%";
+        document.getElementById("main").style.width = "80%";
         document.getElementById("breadcumb").style.marginLeft = "16%";
         document.getElementById("breadcumb").style.display = "flex";
     }

@@ -17,6 +17,8 @@ class Car extends Model
         'rent_cost',
         'sizeCar_id',
         'created_by',
+        'available',
+        'availableAt',
         'updated_by',
         'deleted_by',
         'car_image',
@@ -27,6 +29,18 @@ class Car extends Model
         return $this->hasOne(Capacity::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function routeNotificationForMail()
+    {
+        return [
+            $this->user->name,
+            $this->user->email,
+        ];
+    }
 
     public function deletedBy()
     {
