@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'ichsan',
             'email' => 'ichsan@gmail.com',
-            'role' => 'Buyer',
+            'role' => 'Admin',
             'password' => Hash::make('arby2002'),
         ]);
 

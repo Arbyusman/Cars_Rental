@@ -23,9 +23,6 @@ Route::get('/', [CarsController::class, 'index']);
 Route::get('/search', [CarsController::class, 'search']);
 
 
-Route::get('/notify', [CarsController::class, 'notify']);
-
-
 Route::get('/admin', [CarsController::class, 'admin'])->Middleware('admin');
 
 //Add cars

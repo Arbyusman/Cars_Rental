@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\Car;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,16 +12,18 @@ class carsNotification extends Notification
 {
     use Queueable;
 
-    public $cars;
+    public $car;
+    public $message;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($cars)
+    public function __construct($car, $message)
     {
-        $this->cars = $cars;
+        $this->car = $car;
+        $this->message = $message;
     }
 
     /**
@@ -57,17 +60,8 @@ class carsNotification extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'message' => 'A new car has been added.',
-            'name' => $this->cars->name,
-            'email' => $this->cars->email,
+            'message' => $this->message,
+            'car' =>   $this->car,
         ];
     }
-    // public function toArray($notifiable)
-    // {
-    //     return [
-    //         'message' => 'A new car has been added.',
-    //         'name' => $this->cars->car_name,
-    //         'email' => $this->cars->email,
-    //     ];
-    // }
 }

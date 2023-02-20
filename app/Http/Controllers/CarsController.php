@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Admin;
 use App\Models\Car;
-use App\Models\Capacity;
 use App\Models\User;
-// use App\Models\
+use App\Models\Capacity;
 use App\Notifications\carsNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,18 +19,12 @@ class CarsController extends Controller
         return view('cars.landing_page', compact('cars'));
     }
 
-    public function notify()
-    {
-        $unreadNotifications = auth()->user()->unreadNotifications;
-        $countUnreadNotifications = $unreadNotifications->count()+1;
 
-        if (auth()->user()) {
-            $user = User::first();
-            auth()->user()->notify(new carsNotification($user));
-            return view('layouts.adminLayout', ['notif' => $user, 'unreadNotifications' => $countUnreadNotifications]);
-        }
-       
+    public function notifyByRole($role)
+    {
+        $users = Auth::where('role', 'Admin')->get();
     }
+
 
     public function search()
     {
@@ -64,7 +58,6 @@ class CarsController extends Controller
             'car_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // dd($request);s
 
 
         $image = $request->file('car_image');
@@ -78,7 +71,7 @@ class CarsController extends Controller
             $available = false;
         }
 
-        Car::create([
+        $car = Car::create([
             'car_name' => $request->car_name,
             'rent_cost' => $request->rent_cost,
             'sizeCar_id' => $request->sizeCar_id,
@@ -88,12 +81,13 @@ class CarsController extends Controller
             'car_image' => $path,
         ]);
 
-        if (auth()->user()) {
-            $user = User::first();
-            auth()->user()->notify(new carsNotification($user));
-            return view('cars.admin.notif', ['notif' => $user]);
-        }
+        $message = 'A new car has been added';
 
+        $user = User::where('role', "Admin")->get();;
+        // dd($user);
+        foreach ($user as $u) {
+            $u->notify(new carsNotification($car, $message));
+        }
 
 
         return redirect('/admin')->with('success', 'Created Successfully.');
@@ -109,7 +103,7 @@ class CarsController extends Controller
     public function updateCars(Request $request,  $id)
     {
 
-        $resource = Car::findOrFail($id);
+        $car = Car::findOrFail($id);
 
         $validatedData = $request->validate([
             'car_name' => 'string|max:255',
@@ -118,7 +112,7 @@ class CarsController extends Controller
             'car_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $resource->update($validatedData);
+        $car->update($validatedData);
         if ($request->file('car_image')) {
 
             if ($request->old_image) {
@@ -128,11 +122,16 @@ class CarsController extends Controller
             $image = $request->file('car_image');
             $newName = $request->car_name . '_' . $request->rent_cost . '_' . $request->size_car . '_' . time()  . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs('public/Car_Images', $newName);
-            $resource->car_image = $path;
-            $resource->updated_by = Auth::user()->name;
-            $resource->save();
+            $car->car_image = $path;
+            $car->updated_by = Auth::user()->name;
+            $car->save();
         }
+        $message = 'A car has been Updated';
 
+        $user = User::where('role', "Admin")->get();;
+        foreach ($user as $u) {
+            $u->notify(new carsNotification($car, $message));
+        }
 
         return redirect('/admin')->with('success', 'Created Successfully.');
     }
@@ -147,6 +146,12 @@ class CarsController extends Controller
             Storage::delete($car->car_image);
         }
         $car->delete();
+        $message = 'A car has been Deleted';
+
+        $user = User::where('role', "Admin")->get();;
+        foreach ($user as $u) {
+            $u->notify(new carsNotification($car, $message));
+        }
 
 
         return redirect()->back()->with('message', 'Record successfully deleted');

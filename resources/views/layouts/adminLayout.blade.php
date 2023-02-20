@@ -39,13 +39,6 @@
 
             <div class="d-flex me-3 align-items-center ">
 
-
-
-                {{-- <div class="modal-dialog modal-dialog-scrollable" id="exampleModal" 
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                </div> --}}
-
-
                 <form id="form-input" class=" me-3" role="search" style="width: 244px;
                 height: 36px;">
                     <div class="input-group justify-content-center align-items-center ">
@@ -59,43 +52,60 @@
                 </form>
 
 
+
+
                 <button type="button" class="btn btn-primary position-relative" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">
+                    data-bs-target="#notificationModal">
                     <i class="fa-regular fa-bell"></i>
                     <span class="position-absolute  badge rounded-pill bg-danger">
-                        {{ $unreadNotifications }}
+                        {{-- {{ auth()->user()->unreadNotifications->count() }} --}}
+                        {{ Auth()->user()->unreadNotifications->count() }}
+
                         <span class="visually-hidden">unread messages</span>
                     </span>
                 </button>
 
 
-                <div class="modal " id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    @foreach (auth()->user()->notifications as $notification)
-                        <section id="tampil_mobil">
-                            <div class="card  mt-2 container-fluid">
-
-                                <div class="card-body ms-0 me-0">
-                                    <div class=" d-flex">
-                                        <p class="p-0 my-1">{{ $notification->data['name'] }}</p>
-                                    </div>
-                                    <div class=" d-flex">
-                                        <p class="p-0 my-1"> {{ $notification->data['email'] }}</p>
-                                    </div>
-                                    <div class=" d-flex">
-                                        <p class="p-0 my-1"> {{ $notification->data['message'] }}</p>
-                                    </div>
-
-                                </div>
+                <div class="modal " id="notificationModal" tabindex="2" role="dialog"
+                    aria-labelledby="notificationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="notificationModalLabel">Notifications</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
 
 
+                            <div class="modal-body">
+                                <ul class="list-group">
 
-                        </section>
-                    @endforeach
+                                    @foreach (auth()->user()->notifications as $notification)
+                                        <li
+                                            class="list-group-item {{ $notification->read_at ? '' : 'list-group-item-info' }}">
+                                            {{ $notification->data['message'] }}
+                                            <small
+                                                class="text-muted">{{ $notification->created_at->diffForHumans() }}</small>
+                                        </li>
+                                        {{-- <p>
+                                            Cretated By
+                                            {{ $car->created_by }}
+
+                                        </p> --}}
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
+
                 <button id="navbar-button" class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    data-bs-target="#offcanvasNavbar" aria -controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -133,22 +143,6 @@
                         </div>
                     </div>
                 @endguest
-                {{-- <div id="profil" class="dropdown text-end me-1">
-                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <label class="me-2" for="profil-image"> @Arbyusman</label>
-                        <img src="https://github.com/mdo.png" id="profil-image" alt="mdo" width="32"
-                            height="32" class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu text-small m-0 p-0">
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
-                    </ul>
-                </div> --}}
 
             </div>
 
@@ -184,16 +178,6 @@
             </div>
             <div id="mySidebar" class="sidebar">
                 <!-- Scrollable modal -->
-                <!-- Button trigger modal -->
-                {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Launch demo modal
-                </button> --}}
-
-                <!-- Modal -->
-
-
-
-
 
                 <div id="" class="">
                     <div class="collapse collapse-horizontal" id="collapseWidthExample">
