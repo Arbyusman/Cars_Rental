@@ -28,7 +28,7 @@ class CarsController extends Controller
 
     public function search()
     {
-        $cars = Car::all();
+        $cars = Car::paginate(4);
         return view('cars.search_cars', ['cars' => $cars]);
     }
 

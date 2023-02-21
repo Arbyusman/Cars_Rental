@@ -86,7 +86,7 @@
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="d-flex flex-column gap-3 text-center">
-                                    <image class="mx-auto" src="/img/img_delete.png" height="121px" />
+                                    <img class="mx-auto" src="/img/img_delete.png" height="121px" />
                                     <div class="fw-bolder">Menghapus Data Mobil</div>
                                     <div class="fw-light">
                                         Setelah dihapus, data mobil tidak dapat dikembalikan. Yakin ingin menghapus?
