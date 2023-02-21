@@ -10,6 +10,7 @@ use App\Notifications\carsNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use PhpParser\Node\Stmt\Break_;
 
 class CarsController extends Controller
 {
@@ -20,16 +21,22 @@ class CarsController extends Controller
     }
 
 
-    public function notifyByRole($role)
+    public function search(Request $request)
     {
-        $users = Auth::where('role', 'Admin')->get();
-    }
+        $query = $request->input('query');
+
+        if ($request->has('query')) {
+            $cars = Car::where('car_name', 'like', '%' . $query . '%')
+                ->orWhere('rent_cost', 'like', '%' . $query . '%')
+                ->paginate(4);
+        } else {
+
+            $cars = Car::paginate(4);
+        }
 
 
-    public function search()
-    {
-        $cars = Car::paginate(4);
-        return view('cars.search_cars', ['cars' => $cars]);
+
+        return view('cars.search_cars', ['cars' => $cars,]);
     }
 
     public function admin()
