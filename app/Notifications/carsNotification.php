@@ -5,12 +5,14 @@ namespace App\Notifications;
 use App\Models\Car;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Facades\Vonage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\VonageMessage;
 
 class carsNotification extends Notification
 {
-    use Queueable;
+    use Queueable; 
 
     public $car;
     public $message;
@@ -34,7 +36,7 @@ class carsNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'vonage'];
     }
 
     /**
@@ -63,5 +65,12 @@ class carsNotification extends Notification
             'message' => $this->message,
             'car' =>   $this->car,
         ];
+    }
+    public function toVonage($notifiable)
+    {
+
+          return (new VonageMessage)
+                ->content('Your SMS message content')
+                ->from('15554443333');
     }
 }

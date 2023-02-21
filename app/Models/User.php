@@ -53,6 +53,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function routeNotificationForVonage($notification)
+    {
+        return $this->phone_number;
+    }
+
     public function cars()
     {
         return $this->hasMany(Car::class,'deleted_by');

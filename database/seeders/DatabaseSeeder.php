@@ -23,12 +23,14 @@ class DatabaseSeeder extends Seeder
             'name' => 'arbiansyah',
             'email' => 'arby@gmail.com',
             'role' => 'Admin',
+            'phone_number' => '082293310979',
             'password' => Hash::make('arby2002'),
         ]);
 
         DB::table('users')->insert([
             'name' => 'ichsan',
             'email' => 'ichsan@gmail.com',
+            'phone_number' => '082347923926',
             'role' => 'Admin',
             'password' => Hash::make('arby2002'),
         ]);

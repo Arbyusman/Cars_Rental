@@ -39,7 +39,7 @@
 
             <div class="d-flex me-3 align-items-center ">
 
-                <form id="form-input" class=" me-3" role="search" style="width: 244px;
+                <form  action="/admin" method="GET" id="form-input" class=" me-3" role="search" style="width: 244px;
                 height: 36px;">
                     <div class="input-group justify-content-center align-items-center ">
 

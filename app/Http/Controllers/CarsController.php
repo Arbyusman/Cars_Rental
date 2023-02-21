@@ -39,8 +39,9 @@ class CarsController extends Controller
         return view('cars.search_cars', ['cars' => $cars,]);
     }
 
-    public function admin()
+    public function admin(Request $request)
     {
+
         $cars = Car::all();
         return view('cars.admin.admin', ['cars' => $cars]);
     }
@@ -91,7 +92,7 @@ class CarsController extends Controller
         $message = 'A new car has been added';
 
         $user = User::where('role', "Admin")->get();;
-        // dd($user);
+
         foreach ($user as $u) {
             $u->notify(new carsNotification($car, $message));
         }
