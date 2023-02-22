@@ -33,3 +33,5 @@ Route::get('/admin/update/{id}', [CarsController::class, 'updateCarsView'])->mid
 Route::post('/admin/update/{id}', [CarsController::class, 'updateCars'])->middleware('admin')->name('updateCars');
 
 Route::post('/admin/delete/{id}', [CarsController::class, 'destroy'])->middleware('admin');
+
+Route::get('/test', [CarsController::class, 'notif']);

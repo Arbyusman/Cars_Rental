@@ -7,10 +7,10 @@ use App\Models\Car;
 use App\Models\User;
 use App\Models\Capacity;
 use App\Notifications\carsNotification;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use PhpParser\Node\Stmt\Break_;
 
 class CarsController extends Controller
 {
@@ -89,9 +89,9 @@ class CarsController extends Controller
             'car_image' => $path,
         ]);
 
-        $message = 'A new car has been added';
+        $message = 'A new car has been added' . auth()->user()->name;
 
-        $user = User::where('role', "Admin")->get();;
+        $user = User::where('role', "Admin")->get();
 
         foreach ($user as $u) {
             $u->notify(new carsNotification($car, $message));
@@ -134,8 +134,8 @@ class CarsController extends Controller
             $car->updated_by = Auth::user()->name;
             $car->save();
         }
-        $message = 'A car has been Updated';
 
+        $message = 'A car has been Updated by ' . auth()->user()->name;
         $user = User::where('role', "Admin")->get();;
         foreach ($user as $u) {
             $u->notify(new carsNotification($car, $message));
@@ -154,7 +154,7 @@ class CarsController extends Controller
             Storage::delete($car->car_image);
         }
         $car->delete();
-        $message = 'A car has been Deleted';
+        $message = 'A car has been Deleted' . auth()->user()->name;
 
         $user = User::where('role', "Admin")->get();;
         foreach ($user as $u) {
@@ -164,4 +164,22 @@ class CarsController extends Controller
 
         return redirect()->back()->with('message', 'Record successfully deleted');
     }
+
+    // public function notif()
+    // {
+    //     // dd("notif");
+    //     $basic  = new \Vonage\Client\Credentials\Basic("ab77b81c", "lPAcT2tcsiDAcT8p");
+    //     $client = new \Vonage\Client($basic);
+    //     $response = $client->sms()->send(
+    //         new \Vonage\SMS\Message\SMS("6282293310979", "BRAND_NAME", 'A text message sent using the Nexmo SMS API')
+    //     );
+
+    //     $message = $response->current();
+
+    //     if ($message->getStatus() == 0) {
+    //         echo "The message was sent successfully\n";
+    //     } else {
+    //         echo "The message failed with status: " . $message->getStatus() . "\n";
+    //     }
+    // }
 }

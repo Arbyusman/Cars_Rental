@@ -12,7 +12,7 @@ use Illuminate\Notifications\Messages\VonageMessage;
 
 class carsNotification extends Notification
 {
-    use Queueable; 
+    use Queueable;
 
     public $car;
     public $message;
@@ -36,7 +36,7 @@ class carsNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database', 'vonage'];
+        return ['database', 'vonage', 'mail'];
     }
 
     /**
@@ -48,9 +48,12 @@ class carsNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->greeting('hello.' . $notifiable->name)
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
+            // ->greeting('hello.' . $notifiable->name)
+            ->greeting($this->message)
+            ->line("Mobil " . $this->car->car_name . " berhasil di tambahkan")
+            ->line("dengan harga rental per hari" . $this->car->rent_cost)
+            ->line("ukuran " . $this->car->sizeCar_id)
+            ->line($this->car->created_by);
     }
 
     /**
@@ -59,6 +62,7 @@ class carsNotification extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
+
     public function toDatabase($notifiable)
     {
         return [
@@ -68,9 +72,7 @@ class carsNotification extends Notification
     }
     public function toVonage($notifiable)
     {
-
-          return (new VonageMessage)
-                ->content('Your SMS message content')
-                ->from('15554443333');
+        return (new VonageMessage)
+            ->content($this->message);
     }
 }

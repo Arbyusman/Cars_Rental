@@ -31,7 +31,7 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'nexmo' => [
+    'vonage' => [
         'sms_from' => '082293310979',
     ],
 
