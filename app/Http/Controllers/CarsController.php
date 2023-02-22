@@ -89,7 +89,7 @@ class CarsController extends Controller
             'car_image' => $path,
         ]);
 
-        $message = 'A new car has been added' . auth()->user()->name;
+        $message = 'A new car has been added ' . auth()->user()->name;
 
         $user = User::where('role', "Admin")->get();
 
@@ -154,7 +154,7 @@ class CarsController extends Controller
             Storage::delete($car->car_image);
         }
         $car->delete();
-        $message = 'A car has been Deleted' . auth()->user()->name;
+        $message = 'A car has been Deleted By ' . auth()->user()->name;
 
         $user = User::where('role', "Admin")->get();;
         foreach ($user as $u) {

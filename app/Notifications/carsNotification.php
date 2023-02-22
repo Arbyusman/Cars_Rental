@@ -50,8 +50,8 @@ class carsNotification extends Notification
         return (new MailMessage)
             // ->greeting('hello.' . $notifiable->name)
             ->greeting($this->message)
-            ->line("Mobil " . $this->car->car_name . " berhasil di tambahkan")
-            ->line("dengan harga rental per hari" . $this->car->rent_cost)
+            ->line("Mobil " . $this->car->car_name)
+            ->line("rental per hari" . $this->car->rent_cost)
             ->line("ukuran " . $this->car->sizeCar_id)
             ->line($this->car->created_by);
     }
