@@ -67,23 +67,15 @@ class CarsController extends Controller
         ]);
 
 
-
         $image = $request->file('car_image');
         $newName = $request->car_name . '_' . $request->rent_cost . '_' .  $request->sizeCar_id . '_' . time()  . '.' . $image->getClientOriginalExtension();
-        $path = $image->storeAs('public/Car_Images', $newName);
+        $path = $image->storeAs('Car_Images', $newName);
 
-
-        if ($request->availableAt == true) {
-            $available = true;
-        } else {
-            $available = false;
-        }
 
         $car = Car::create([
             'car_name' => $request->car_name,
             'rent_cost' => $request->rent_cost,
             'sizeCar_id' => $request->sizeCar_id,
-            'available' => $available,
             'availableAt' => $request->availableAt,
             'created_by' => Auth::user()->name,
             'car_image' => $path,
@@ -117,6 +109,7 @@ class CarsController extends Controller
             'car_name' => 'string|max:255',
             'rent_cost' => 'max:255',
             'size_car' => 'max:255',
+            'availableAt' => 'required',
             'car_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -129,7 +122,7 @@ class CarsController extends Controller
 
             $image = $request->file('car_image');
             $newName = $request->car_name . '_' . $request->rent_cost . '_' . $request->size_car . '_' . time()  . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('public/Car_Images', $newName);
+            $path = $image->storeAs('Car_Images', $newName);
             $car->car_image = $path;
             $car->updated_by = Auth::user()->name;
             $car->save();
@@ -164,22 +157,4 @@ class CarsController extends Controller
 
         return redirect()->back()->with('message', 'Record successfully deleted');
     }
-
-    // public function notif()
-    // {
-    //     // dd("notif");
-    //     $basic  = new \Vonage\Client\Credentials\Basic("ab77b81c", "lPAcT2tcsiDAcT8p");
-    //     $client = new \Vonage\Client($basic);
-    //     $response = $client->sms()->send(
-    //         new \Vonage\SMS\Message\SMS("6282293310979", "BRAND_NAME", 'A text message sent using the Nexmo SMS API')
-    //     );
-
-    //     $message = $response->current();
-
-    //     if ($message->getStatus() == 0) {
-    //         echo "The message was sent successfully\n";
-    //     } else {
-    //         echo "The message failed with status: " . $message->getStatus() . "\n";
-    //     }
-    // }
 }

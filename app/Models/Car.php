@@ -19,7 +19,6 @@ class Car extends Model
         'rent_cost',
         'sizeCar_id',
         'created_by',
-        'available',
         'availableAt',
         'updated_by',
         'deleted_by',

@@ -40,17 +40,33 @@
           border-radius: 2px;">
                     </div>
 
+                    <div id="" class="d-flex align-items-center flex-row my-2">
+                        <label for="availableAt" class="input_kendaraan" style="width: 13%;">Tersedia</label>
+                        <input type="datetime-local" name="availableAt"
+                        value="{{ $car->availableAt }}"
+                            class="input_data_car @error('availableAt') is-invalid                         
+                        @enderror"
+                            id="availableAt" placeholder="RP 0,-"
+                            style="width:35% ; border: 1px solid #D0D0D0;
+          border-radius: 2px;">
+                        @error('availableAt')
+                            <span class="invalid-feedback ms-1" role="alert" style="width:20%">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
                     <div class="d-flex align-items-center flex-row my-2">
                         <label for="size_car" class="input_kendaraan" style="width: 13%;">Ukuran</label>
                         <select class="capacity input_data_car" name="size_car" id="size_car"
                             style="width:35% ; border: 1px solid #D0D0D0;
           border-radius: 2px; color: #595858; "
-                            value="{{ $car->size_car }}">
+                            value="{{ $car->sizeCar_id }}">
 
-                            @if (!$car->size_car)
+                            @if (!$car->sizeCar_id)
                                 <option hidden>Ukuran Kendaraan</option>
                             @else
-                                <option selected value="{{ $car->size_car }}">{{ $car->size_car }}</option>
+                                <option selected value="{{ $car->sizeCar_id }}">{{ $car->sizeCar_id }}</option>
                             @endif
                             <option value="Small">Small</option>
                             <option value="Medium">Medium</option>

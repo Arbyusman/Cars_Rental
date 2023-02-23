@@ -36,7 +36,7 @@ class carsNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database', 'vonage', 'mail'];
+        return ['database', '', 'mail'];
     }
 
     /**
